@@ -88,7 +88,7 @@ public class HealthMeasure implements Serializable {
 		this.value = value;
 	}
 
-    @XmlTransient
+    //@XmlTransient
 	public User getUser() {
 		return idUser;
 	}
@@ -101,7 +101,7 @@ public class HealthMeasure implements Serializable {
 	public static HealthMeasure create(HealthMeasure m) throws PersistenceException {
         
         
-        System.out.println("flaggg: "+m);
+        //System.out.println("flaggg: "+m);
 		EntityManager em = LifeCoachDao.instance.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
