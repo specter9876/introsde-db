@@ -3,6 +3,7 @@ package introsde.assignment.model;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Cacheable;
 
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
@@ -24,6 +25,7 @@ import introsde.assignment.dao.LifeCoachDao;
 import introsde.assignment.model.User;
 
 @Entity
+@Cacheable(false)
 @Table(name = "HealthMeasure")
 @NamedQueries({ @NamedQuery(name = "HealthMeasure.findAll", query = "SELECT m FROM HealthMeasure m ORDER BY m.date DESC"),
 	@NamedQuery(name = "HealthMeasure.findByIdUser", query = "SELECT m FROM HealthMeasure m where m.idUser = :idUser ORDER BY m.date DESC"),
@@ -88,12 +90,12 @@ public class HealthMeasure implements Serializable {
 		this.value = value;
 	}
 
-    //@XmlTransient
-	public User getUser() {
+    
+	public User getIdUser() {
 		return idUser;
 	}
 
-	public void setUser(User idUser) {
+	public void setIdUser(User idUser) {
 		this.idUser = idUser;
 	}
 
@@ -174,6 +176,6 @@ public class HealthMeasure implements Serializable {
 	@Override
 	public String toString() {
 		return "HealthMeasure (" + getIdHealthMeasure() + ", date=" + getDate() + ", type=" + getType() + ", value=" +
-				", IdUser=" + getUser().getIdUser() + ")";
+				", IdUser=" + getIdUser().getIdUser() + ")";
 	}
 }

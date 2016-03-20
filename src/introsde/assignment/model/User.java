@@ -55,7 +55,8 @@ public class User implements Serializable {
 	@OneToMany(mappedBy = "idUser", cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	private List<HealthMeasure> healthMeasure;
 
-	
+	@OneToMany(mappedBy = "idUser", cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	private List<Activity> activity;
 
 	@OneToMany(mappedBy = "idUser", cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	private List<Goal> goal;
@@ -128,8 +129,7 @@ public class User implements Serializable {
 	}	
 	
 	@XmlTransient
-
-	public List<HealthMeasure> getHealthMeasure() {
+    public List<HealthMeasure> getHealthMeasure() {
 		return healthMeasure;
 	}
 
@@ -146,6 +146,17 @@ public class User implements Serializable {
 	public void setGoals(List<Goal> goal) {
 		this.goal = goal;
 	}
+    
+    
+	@XmlTransient
+    public List<Activity> getActivity() {
+		return activity;
+	}
+    
+	public void setActivity(List<Activity> activity) {
+		this.activity= activity;
+	}
+    
 
 	
 	

@@ -3,6 +3,7 @@ package introsde.assignment.model;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Cacheable;
 
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
@@ -23,12 +24,13 @@ import javax.xml.bind.annotation.XmlTransient;
 import introsde.assignment.dao.LifeCoachDao;
 
 @Entity
+@Cacheable(false)
 @Table(name = "Goal")
 @NamedQueries({ @NamedQuery(name = "Goal.findAll", query = "SELECT g FROM Goal g"),
-	@NamedQuery(name = "Goal.findByIdUser", query = "SELECT g FROM Goal g where g.idUser = :idUser ORDER BY g.startAt"),
+	@NamedQuery(name = "Goal.findByIdUser", query = "SELECT g FROM Goal g where g.idUser = :idUser ORDER BY g.idGoal"),
     @NamedQuery(name = "Goal.findById", query = "SELECT g FROM Goal g where g.idGoal = :idGoal"),
-	@NamedQuery(name = "Goal.findByIdUserType", query = "SELECT g FROM Goal g where g.idUser = :idUser and g.type = :type ORDER BY g.startAt "),
-	@NamedQuery(name = "Goal.findIsAchievedByIdUser", query = "SELECT g FROM Goal g where g.isAchieved = :isAchieved and g.idUser= :idUser ORDER BY g.startAt"), })
+	@NamedQuery(name = "Goal.findByIdUserType", query = "SELECT g FROM Goal g where g.idUser = :idUser and g.type = :type ORDER BY g.idGoal "),
+	@NamedQuery(name = "Goal.findIsAchievedByIdUser", query = "SELECT g FROM Goal g where g.isAchieved = :isAchieved and g.idUser= :idUser ORDER BY g.idGoal"), })
 @XmlRootElement
 
 public class Goal implements Serializable {
@@ -105,6 +107,19 @@ public class Goal implements Serializable {
 	public void setStartAt(Date startAt) {
 		this.startAt = startAt;
 	}
+    
+    
+    
+    
+    public Date getEndAt() {
+		return endAt;
+	}
+    
+	public void setEndAt(Date endAt) {
+		this.endAt = endAt;
+	}
+    
+    
 
 	public double getInitialValue() {
 		return initialValue;
@@ -140,7 +155,7 @@ public class Goal implements Serializable {
         this.type=type;
     }
     
-    @XmlTransient
+    //@XmlTransient
 	public User getIdUser() {
 		return idUser;
 	}
@@ -184,7 +199,7 @@ public class Goal implements Serializable {
    
     
     
-    //
+    //DB
 
 	public static List<Goal> getByIdUserType(long idUser, String type) throws PersistenceException {
 		EntityManager em =LifeCoachDao.instance.createEntityManager();
@@ -231,6 +246,28 @@ public class Goal implements Serializable {
 		LifeCoachDao.instance.closeConnections(em);
         
 		return g;
+	}
+    
+    
+    public static Goal create(Goal g) throws PersistenceException {
+		EntityManager em = LifeCoachDao.instance.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		em.persist(g);
+		tx.commit();
+		LifeCoachDao.instance.closeConnections(em);
+        
+		return g;
+	}
+    
+	public static void remove(Goal g) throws PersistenceException {
+		EntityManager em = LifeCoachDao.instance.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		g = em.merge(g);
+		em.remove(g);
+		tx.commit();
+		LifeCoachDao.instance.closeConnections(em);
 	}
     
 	

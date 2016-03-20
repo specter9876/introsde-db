@@ -149,7 +149,13 @@ public class DBImpl implements DB {
         List<Activity> activity=Activity.getAll();
         return activity;
     }
-    
+
+    public List<Activity> getActivityByIdUser(Long idUser){
+        
+        List<Activity> activity=Activity.getByIdUser(idUser);
+        return activity;
+    }
+
     //Method #13:
     @Override
     public Activity getActivityById(Long idActivity){
@@ -221,7 +227,6 @@ public class DBImpl implements DB {
     @Override
     public List<Goal> getGoalNotAchieved(long id){
         
-        ////modifacare va solo per user 1
         List<Goal> goal=Goal.getUnAchieved(id);
         return goal;
     }
@@ -230,7 +235,6 @@ public class DBImpl implements DB {
     @Override
     public List<Goal> getGoalAchieved(long id){
         
-        ////modifacare va solo per user 1
         List<Goal> goal=Goal.getAchieved(id);
         return goal;
     }
@@ -250,6 +254,21 @@ public class DBImpl implements DB {
         //to do
         return null;
     }
+    
+    @Override
+    public Goal createGoal(Goal goal){
+        
+        return Goal.create(goal);
+    }
+    
+    @Override
+    public Goal updateGoal(Goal goal){
+        
+        return Goal.update(goal);
+        
+    }
+    
+
     
     
     ///HEALTHMEASURE///////////////////////////////////////////////////////
@@ -279,31 +298,21 @@ public class DBImpl implements DB {
         return healthMeasure;
     }
 
-    ////////////mmm va nella business logic///////////////////replace con vedi github
-    //Method #26:
-    @Override
-    public HealthMeasure getRecentHealthMeasureByIdUser(Long idUser){
-        
-        
-        //to do
-        return null;
-    }
-     //////////////////////////////////////////////////////////////////////
-    
+  
     //Method #27:
     @Override
     public HealthMeasure createHealthMeasure(HealthMeasure healthMeasure){
         
-        HealthMeasure.create(healthMeasure);
-        return healthMeasure;
+        HealthMeasure m=HealthMeasure.create(healthMeasure);
+        return  m;
     }
     
     //Method #27:
     @Override
     public HealthMeasure updateHealthMeasure(HealthMeasure healthMeasure){
         
-        HealthMeasure.update(healthMeasure);
-        return healthMeasure;
+       // HealthMeasure.update(healthMeasure);
+        return  HealthMeasure.update(healthMeasure);
         
     }
 

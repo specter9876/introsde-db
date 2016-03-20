@@ -11,6 +11,8 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -29,6 +31,7 @@ import introsde.assignment.dao.LifeCoachDao;
 		@NamedQuery(name = "Activity.findAll", query = "SELECT a FROM Activity a ORDER BY a.idActivity"),
 		@NamedQuery(name = "Activity.findByType", query = "SELECT a FROM Activity a where a.type = :type "),
         @NamedQuery(name = "Activity.findByName", query = "SELECT a FROM Activity a where a.name = :name "),
+        @NamedQuery(name = "Activity.findByIdUser", query = "SELECT a FROM Activity a where a.idUser = :idUser "),
         @NamedQuery(name = "Activity.findByCalories", query = "SELECT activity FROM Activity activity where activity.calories >= :calories")})//and a.isMyActivity=: isMyACtivity
 
 @XmlRootElement
@@ -43,9 +46,15 @@ public class Activity implements Serializable {
 	private String description;
 	private String name;
 	private String type;
+    private double value;
 	private double calories;
     private double duration;
     private int isMyActivity;
+    
+    @ManyToOne
+	@JoinColumn(name = "idUser", referencedColumnName = "idUser")
+	private User idUser;
+
     
 
     public Activity() {
@@ -81,6 +90,14 @@ public class Activity implements Serializable {
 	public void setType(String type) {
 		this.type = type;
 	}
+    
+    public double getValue() {
+		return value;
+	}
+    
+	public void setValue(double value) {
+		this.value = value;
+	}
 
 	public double getCalories() {
 		return calories;
@@ -104,6 +121,15 @@ public class Activity implements Serializable {
 	public void setIsMyActivity(int isMyActivity) {
 		this.isMyActivity = isMyActivity;
 	}
+    public User getIdUser() {
+		return idUser;
+	}
+    
+	public void setIdUser(User idUser) {
+		this.idUser = idUser;
+	}
+    
+
 
 	
 
@@ -153,6 +179,19 @@ public class Activity implements Serializable {
 
 		return result;
 	}
+    
+    public static List<Activity> getByIdUser(long idUser)
+    throws PersistenceException {
+		EntityManager em = LifeCoachDao.instance.createEntityManager();
+		List<Activity> result = em
+        .createNamedQuery("Activity.findByIdUser", Activity.class)
+        .setParameter("idUser", User.getById(idUser)).getResultList();
+		LifeCoachDao.instance.closeConnections(em);
+        
+		return result;
+	}
+    
+
 
 	
 	public static Activity update(Activity a) throws PersistenceException {

@@ -3,6 +3,8 @@ package introsde.assignment.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Cacheable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
@@ -22,6 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 import introsde.assignment.dao.LifeCoachDao;
 
 @Entity
+@Cacheable(false)
 @Table(name = "Food")
 @NamedQueries({
 		@NamedQuery(name = "Food.findAll", query = "SELECT food FROM Food food"),
