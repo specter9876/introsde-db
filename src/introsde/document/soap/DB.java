@@ -23,7 +23,7 @@ public interface DB {
     
     //Method #1:
     @WebMethod(operationName="getALLFood")
-    @WebResult(name="food")
+    @WebResult(name="foods")
     public List<Food> getAllFood();
     
     //Method #2:
@@ -33,11 +33,11 @@ public interface DB {
 
     //Method #3:
     @WebMethod(operationName="getFoodByCaloriesBound")
-    @WebResult(name="food")
+    @WebResult(name="foods")
     public List <Food> getFoodByCaloriesBound (@WebParam(name="calories") double calories);
     
     @WebMethod(operationName="getFoodByType")
-    @WebResult(name="food")
+    @WebResult(name="foods")
     public List <Food> getFoodByType (@WebParam(name="type") String type);
     
     //Method #3:
@@ -49,7 +49,7 @@ public interface DB {
     
     //Method #4:
     @WebMethod(operationName="getAllUser")
-    @WebResult(name="user")
+    @WebResult(name="users")
     public List<User> getAllUser();
     
     
@@ -96,12 +96,12 @@ public interface DB {
     
     //Method #12:
     @WebMethod(operationName="getAllActivity")
-    @WebResult(name="activity")
+    @WebResult(name="activities")
     public List<Activity> getAllActivity();
     
     //Method #12:
     @WebMethod(operationName="getActivityByIdUser")
-    @WebResult(name="activity")
+    @WebResult(name="activities")
     public List<Activity> getActivityByIdUser(@WebParam(name = "idUser") Long idUser);
     
 
@@ -113,17 +113,17 @@ public interface DB {
     
     //Method #14:
     @WebMethod(operationName="getActivityByType")
-    @WebResult(name="activity")
+    @WebResult(name="activities")
     public List<Activity> getActivityByType(@WebParam(name = "type") String type);
     
     //Method #15:
     @WebMethod(operationName="getActivityByName")
-    @WebResult(name="activity")
+    @WebResult(name="activities")
     public List<Activity> getActivityByName(@WebParam(name = "name") String name);
     
     //Method #16:
     @WebMethod(operationName="getActivityByCalories")
-    @WebResult(name="activity")
+    @WebResult(name="activities")
     public List<Activity> getActivityByCalories(@WebParam(name = "calories") double calories);
     
     
@@ -136,7 +136,7 @@ public interface DB {
 
     //Method #18:
     @WebMethod(operationName="getAllGoal")
-    @WebResult(name="goal")
+    @WebResult(name="goals")
     public List<Goal> getAllGoal();
     
     //Method #19:
@@ -146,27 +146,27 @@ public interface DB {
     
     //Method #20:
     @WebMethod(operationName="getGoalByType")
-    @WebResult(name="goal")
+    @WebResult(name="goals")
     public List<Goal> getGoalByType(@WebParam(name = "type") String type, @WebParam(name = "userId") long userId);
     
     //Method #21:
     @WebMethod(operationName="getGoalNotAchieved")
-    @WebResult(name="goal")
+    @WebResult(name="goals")
     public List<Goal> getGoalNotAchieved(@WebParam(name = "userId") long userId);
     
     //Method #21:
     @WebMethod(operationName="getGoalAchieved")
-    @WebResult(name="goal")
+    @WebResult(name="goals")
     public List<Goal> getGoalAchieved(@WebParam(name = "userId") long userId);
     
     //Method #22:
     @WebMethod(operationName="getGoalEndAt")
-    @WebResult(name="goal")
+    @WebResult(name="goals")
     public List<Goal> getGoalEndAt(@WebParam(name = "endAt") Date endAt);
     
     //Method #23:
     @WebMethod(operationName="controlGoal")
-    @WebResult(name="goal")
+    @WebResult(name="goals")
     public List<Goal> controlGoal(@WebParam(name = "type") String type);
     
     
@@ -187,18 +187,18 @@ public interface DB {
     
     //Method #24:
     @WebMethod(operationName="getAllHealthMeasure")
-    @WebResult(name="healthMeasure")
+    @WebResult(name="healthMeasures")
     public List<HealthMeasure> getAllHealthMeasure();
     
     //Method #25:
     @WebMethod(operationName="getHealthMeasureByIdUser")
-    @WebResult(name="healthMeasure")
+    @WebResult(name="healthMeasures")
     public List<HealthMeasure> getHealthMeasureByIdUser(@WebParam(name = "idUser") Long idUser);
 
         
     //Method #26:
     @WebMethod(operationName="getHealthMeasureByIdUserType")
-    @WebResult(name="healthMeasure")
+    @WebResult(name="healthMeasures")
     public List<HealthMeasure> getHealthMeasureByIdUserType(@WebParam(name = "idUser") Long idUser, @WebParam(name = "type") String type);
     
 
