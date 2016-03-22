@@ -200,7 +200,7 @@ public class User implements Serializable {
 				.setParameter("password", password).getResultList();
 		LifeCoachDao.instance.closeConnections(em);
 
-		if (result.isEmpty()) {
+		if (user==null) {
             System.out.println("not found on db");
 			return null;
 		}
