@@ -22,7 +22,7 @@ public interface DB {
     ////FOOD//////////////////////////////////////////////////////
     
     //Method #1:
-    @WebMethod(operationName="getALLFood")
+    @WebMethod(operationName="getAllFood")
     @WebResult(name="foods")
     public List<Food> getAllFood();
     
@@ -208,7 +208,6 @@ public interface DB {
     @WebResult(name="healthMeasure")
     public HealthMeasure createHealthMeasure(@WebParam(name = "healthMeasureIn") HealthMeasure healthMeasure);
     
-    //Method #27:
     @WebMethod(operationName="updateHealthMeasure")
     @WebResult(name="healthMeasure")
     public HealthMeasure updateHealthMeasure(@WebParam(name = "healthMeasureIn") HealthMeasure healthMeasure);
