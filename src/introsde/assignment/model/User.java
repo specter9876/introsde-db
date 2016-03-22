@@ -196,17 +196,16 @@ public class User implements Serializable {
 	public static User getByUserNamePassword(String userName, String password) throws PersistenceException {
 		EntityManager em = LifeCoachDao.instance.createEntityManager();
 		
-		User user = em.createNamedQuery("User.findByUserNamePassword", User.class).setParameter("userName", userName)
+		List<User> result = em.createNamedQuery("User.findByUserNamePassword", User.class).setParameter("userName", userName)
 				.setParameter("password", password).getResultList();
 		LifeCoachDao.instance.closeConnections(em);
 
-		if (user==null) {
-            System.out.println("not found on db");
+		if (result.isEmpty()) {
 			return null;
 		}
         System.out.println("found on db");
-		System.out.println("User: "+user);
-		return user;
+		System.out.println("User: "+result.get(0));
+		return result.get(0);
 	}
 
 	public static User update(User user) throws PersistenceException {
