@@ -114,7 +114,9 @@ public class DBImpl implements DB {
    @Override
 	public User loginUser(String userName, String password){
         
+        System.out.println("sting username: "+userName+", password:"+password);
         User user=User.getByUserNamePassword(userName,password);
+        System.out.println("User: "+user);
         return user;
     }
     

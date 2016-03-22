@@ -8,7 +8,6 @@
 		<class>introsde.assignment.model.Activity</class>
 		<class>introsde.assignment.model.User</class>
 		<class>introsde.assignment.model.Food</class>
-        <class>introsde.assignment.model.Test</class>
 		
 		<properties>
 			<!-- Scan for annotated classes and Hibernate mapping XML files -->
