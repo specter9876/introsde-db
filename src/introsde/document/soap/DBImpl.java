@@ -1,5 +1,5 @@
-package introsde.document.soap;
-
+//package introsde.document.soap;
+package introsde.document.ws;
 import introsde.assignment.model.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -13,7 +13,7 @@ import javax.jws.WebService;
 
 //Service Implementation
 
-@WebService(endpointInterface = "introsde.document.soap.DB",
+@WebService(endpointInterface = "introsde.document.ws.DB",
 	serviceName="DBService")
 public class DBImpl implements DB {
     

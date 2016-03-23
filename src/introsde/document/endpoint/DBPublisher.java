@@ -1,6 +1,6 @@
 package introsde.document.endpoint;
 
-import introsde.document.soap.DBImpl;
+import introsde.document.ws.DBImpl;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;

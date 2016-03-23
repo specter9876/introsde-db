@@ -1,4 +1,5 @@
-package introsde.document.soap;
+//package introsde.document.soap;
+package introsde.document.ws;
 import introsde.assignment.model.*;
 
 
