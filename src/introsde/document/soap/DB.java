@@ -18,7 +18,7 @@ import java.util.Date;
 @SOAPBinding(style = Style.DOCUMENT, use=Use.LITERAL) //optional
 public interface DB {
     
-    /*
+    
     
     ////FOOD//////////////////////////////////////////////////////
     
@@ -77,12 +77,12 @@ public interface DB {
     //Method #9:
     @WebMethod(operationName="removeUser")
     public boolean removeUser (@WebParam(name="userIn") User user);
-    */
+  
     //Methid #10:
     @WebMethod(operationName = "loginUser")
 	@WebResult(name = "user")
 	public User loginUser(@WebParam(name = "userName") String userName, @WebParam(name = "password") String password);
-/*
+
     //Method #11:
     @WebMethod(operationName = "updatePassword")
 	//@WebResult(name = "update")
@@ -213,6 +213,6 @@ public interface DB {
     @WebResult(name="healthMeasure")
     public HealthMeasure updateHealthMeasure(@WebParam(name = "healthMeasureIn") HealthMeasure healthMeasure);
 
-    */
+    
     
 }
