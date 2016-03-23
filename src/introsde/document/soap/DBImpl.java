@@ -17,7 +17,7 @@ import javax.jws.WebService;
 	serviceName="DBService")
 public class DBImpl implements DB {
     
-    
+    /*
     ////FOOD//////////////////////////////////////////////////////
     
     //Method #1:
@@ -109,7 +109,7 @@ public class DBImpl implements DB {
         User.remove(user);
         return true;
     }
-    
+    */
     //Method #10:
    @Override
 	public User loginUser(String userName, String password){
@@ -119,7 +119,7 @@ public class DBImpl implements DB {
         System.out.println("User: "+user);
         return user;
     }
-    
+    /*
     
     //Method #11:
     @Override
@@ -316,6 +316,7 @@ public class DBImpl implements DB {
        // HealthMeasure.update(healthMeasure);
         return  HealthMeasure.update(healthMeasure);
         
-    }
+    }*/
+    
 
 }
