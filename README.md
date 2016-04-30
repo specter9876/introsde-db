@@ -1,3 +1,4 @@
 # introsde-db
-Available at http://polar-spire-7523.herokuapp.com/ws/db
-Wisdl at http://polar-spire-7523.herokuapp.com/ws/db?wsdl
+More info at Wiki
+Available at http://infinite-savannah-53051.herokuapp.com/ws/db
+Wisdl at http://infinite-savannah-53051.herokuapp.com/ws/db?wsdl
